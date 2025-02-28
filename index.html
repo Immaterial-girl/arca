@@ -34,8 +34,8 @@
 
         // Loop through each image and animate it
         images.forEach(image => {
-            let x = .5 * window.innerWidth; // Random starting position on x-axis
-            let y = .5 * window.innerHeight; // Random starting position on y-axis
+            let x = Math.Random() * window.innerWidth * .7; // Random starting position on x-axis
+            let y = Math.Random() * window.innerHeight * .7; // Random starting position on y-axis
             let dx = randomSpeed(); // Random horizontal movement direction: -5 or 5
             let dy = randomSpeed(); // Random vertical movement direction: -5 or 5
             const imgWidth = image.offsetWidth;
