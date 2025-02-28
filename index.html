@@ -20,21 +20,24 @@
     </style>
 </head>
 <body>
-    <img id="arca" src="src/arcabounce.jpg" alt="Bouncing Image">
-    <img id="phie" src="src/phie.jpeg" alt="Bouncing Image">
-    <img id="bjork" src="src/bjork.jpg" alt="Bouncing Image">
-    <img id="eartheater" src="src/eartheater" alt="Bouncing Image">
+    <img id="arca" src="src/arcabounce.jpg" alt="arca">
+    <img id="phie" src="src/phie.jpg" alt="sophie">
+    <img id="bjork" src="src/bjork.jpg" alt="bjork">
+    <img id="eartheater" src="src/eartheater.jpeg" alt="eartheater">
 
     <script>
         const images = document.querySelectorAll('img'); // Select all <img> elements
-        const speed = 5; // Speed of the bouncing
+
+         function randomSpeed() {
+            return Math.random() < 0.5 ? -5 : 5; // Randomly return either -5 or 5
+        }
 
         // Loop through each image and animate it
         images.forEach(image => {
-            let x = Math.random() * window.innerWidth; // Random starting position on x-axis
-            let y = Math.random() * window.innerHeight; // Random starting position on y-axis
-            let dx = speed; // Horizontal movement direction
-            let dy = speed; // Vertical movement direction
+            let x = .5 * window.innerWidth; // Random starting position on x-axis
+            let y = .5 * window.innerHeight; // Random starting position on y-axis
+            let dx = randomSpeed(); // Random horizontal movement direction: -5 or 5
+            let dy = randomSpeed(); // Random vertical movement direction: -5 or 5
             const imgWidth = image.offsetWidth;
             const imgHeight = image.offsetHeight;
 
