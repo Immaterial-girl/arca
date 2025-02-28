@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arca</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <img id="logo" src="arcabounce.jpg" alt="bounce">
+
+    <script>
+        const logo = document.getElementById("logo");
+
+        let xSpeed = 2;
+        let ySpeed = 2;
+        let xPos = 0;
+        let yPos = 0;
+
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        function moveLogo() {
+            xPos += xSpeed;
+            yPos += ySpeed;
+
+            if (xPos + logo.width >= screenWidth || xPos <= 0) {
+                xSpeed = -xSpeed;
+            }
+
+            if (yPos + logo.height >= screenHeight || yPos <= 0) {
+                ySpeed = -ySpeed;
+            }
+
+            logo.style.left = `${xPos}px`;
+            logo.style.top = `${yPos}px`;
+
+            requestAnimationFrame(moveLogo);
+        }
+
+        moveLogo();
+    </script>
+</body>
+</html>
