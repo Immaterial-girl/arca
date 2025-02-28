@@ -28,7 +28,7 @@
     <script>
         const images = document.querySelectorAll('img'); // Select all <img> elements
 
-        function randomSpeed() {
+         function randomSpeed() {
             return Math.random() < 0.5 ? -5 : 5; // Randomly return either -5 or 5
         }
 
@@ -45,250 +45,19 @@
                 const screenWidth = window.innerWidth;
                 const screenHeight = window.innerHeight;
 
-                // Clamp the x and y positions to stay within the window bounds
+                // Check if image is hitting the right or left edge
                 if (x + imgWidth >= screenWidth || x <= 0) {
                     dx = -dx; // Reverse direction horizontally
                 }
 
+                // Check if image is hitting the bottom or top edge
                 if (y + imgHeight >= screenHeight || y <= 0) {
                     dy = -dy; // Reverse direction vertically
                 }
 
-                // Update position based on direction
+                // Update position
                 x += dx;
                 y += dy;
-
-                // Clamp x and y to ensure the image stays within bounds after resize
-                x = Math.max(0, Math.min(x, screenWidth - imgWidth));
-                y = Math.max(0, Math.min(y, screenHeight - imgHeight));
-
-                // Apply new position to image
-                image.style.left = `${x}px`;
-                image.style.top = `${y}px`;
-
-                requestAnimationFrame(moveImage); // Keep animating the movement
-            }
-
-            moveImage(); // Start the animation for each image
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Image</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #D8DEDD;
-        }
-
-        img {
-            position: absolute;
-            width: 7%; /* Set your image size */
-            height: auto; /* Set your image size */
-            transition: transform 0.01s;
-        }
-    </style>
-</head>
-<body>
-    <img id="arca" src="src/arcabounce.jpg" alt="arca">
-    <img id="phie" src="src/phie.jpg" alt="sophie">
-    <img id="bjork" src="src/bjork.jpg" alt="bjork">
-    <img id="eartheater" src="src/eartheater.jpeg" alt="eartheater">
-
-    <script>
-        const images = document.querySelectorAll('img'); // Select all <img> elements
-
-        function randomSpeed() {
-            return Math.random() < 0.5 ? -5 : 5; // Randomly return either -5 or 5
-        }
-
-        // Loop through each image and animate it
-        images.forEach(image => {
-            let x = Math.random() * window.innerWidth * .7; // Random starting position on x-axis
-            let y = Math.random() * window.innerHeight * .7; // Random starting position on y-axis
-            let dx = randomSpeed(); // Random horizontal movement direction: -5 or 5
-            let dy = randomSpeed(); // Random vertical movement direction: -5 or 5
-            const imgWidth = image.offsetWidth;
-            const imgHeight = image.offsetHeight;
-
-            function moveImage() {
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-
-                // Clamp the x and y positions to stay within the window bounds
-                if (x + imgWidth >= screenWidth || x <= 0) {
-                    dx = -dx; // Reverse direction horizontally
-                }
-
-                if (y + imgHeight >= screenHeight || y <= 0) {
-                    dy = -dy; // Reverse direction vertically
-                }
-
-                // Update position based on direction
-                x += dx;
-                y += dy;
-
-                // Clamp x and y to ensure the image stays within bounds after resize
-                x = Math.max(0, Math.min(x, screenWidth - imgWidth));
-                y = Math.max(0, Math.min(y, screenHeight - imgHeight));
-
-                // Apply new position to image
-                image.style.left = `${x}px`;
-                image.style.top = `${y}px`;
-
-                requestAnimationFrame(moveImage); // Keep animating the movement
-            }
-
-            moveImage(); // Start the animation for each image
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Image</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #D8DEDD;
-        }
-
-        img {
-            position: absolute;
-            width: 7%; /* Set your image size */
-            height: auto; /* Set your image size */
-            transition: transform 0.01s;
-        }
-    </style>
-</head>
-<body>
-    <img id="arca" src="src/arcabounce.jpg" alt="arca">
-    <img id="phie" src="src/phie.jpg" alt="sophie">
-    <img id="bjork" src="src/bjork.jpg" alt="bjork">
-    <img id="eartheater" src="src/eartheater.jpeg" alt="eartheater">
-
-    <script>
-        const images = document.querySelectorAll('img'); // Select all <img> elements
-
-        function randomSpeed() {
-            return Math.random() < 0.5 ? -5 : 5; // Randomly return either -5 or 5
-        }
-
-        // Loop through each image and animate it
-        images.forEach(image => {
-            let x = Math.random() * window.innerWidth * .7; // Random starting position on x-axis
-            let y = Math.random() * window.innerHeight * .7; // Random starting position on y-axis
-            let dx = randomSpeed(); // Random horizontal movement direction: -5 or 5
-            let dy = randomSpeed(); // Random vertical movement direction: -5 or 5
-            const imgWidth = image.offsetWidth;
-            const imgHeight = image.offsetHeight;
-
-            function moveImage() {
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-
-                // Clamp the x and y positions to stay within the window bounds
-                if (x + imgWidth >= screenWidth || x <= 0) {
-                    dx = -dx; // Reverse direction horizontally
-                }
-
-                if (y + imgHeight >= screenHeight || y <= 0) {
-                    dy = -dy; // Reverse direction vertically
-                }
-
-                // Update position based on direction
-                x += dx;
-                y += dy;
-
-                // Clamp x and y to ensure the image stays within bounds after resize
-                x = Math.max(0, Math.min(x, screenWidth - imgWidth));
-                y = Math.max(0, Math.min(y, screenHeight - imgHeight));
-
-                // Apply new position to image
-                image.style.left = `${x}px`;
-                image.style.top = `${y}px`;
-
-                requestAnimationFrame(moveImage); // Keep animating the movement
-            }
-
-            moveImage(); // Start the animation for each image
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Image</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background-color: #D8DEDD;
-        }
-
-        img {
-            position: absolute;
-            width: 7%; /* Set your image size */
-            height: auto; /* Set your image size */
-            transition: transform 0.01s;
-        }
-    </style>
-</head>
-<body>
-    <img id="arca" src="src/arcabounce.jpg" alt="arca">
-    <img id="phie" src="src/phie.jpg" alt="sophie">
-    <img id="bjork" src="src/bjork.jpg" alt="bjork">
-    <img id="eartheater" src="src/eartheater.jpeg" alt="eartheater">
-
-    <script>
-        const images = document.querySelectorAll('img'); // Select all <img> elements
-
-        function randomSpeed() {
-            return Math.random() < 0.5 ? -5 : 5; // Randomly return either -5 or 5
-        }
-
-        // Loop through each image and animate it
-        images.forEach(image => {
-            let x = Math.random() * window.innerWidth * .7; // Random starting position on x-axis
-            let y = Math.random() * window.innerHeight * .7; // Random starting position on y-axis
-            let dx = randomSpeed(); // Random horizontal movement direction: -5 or 5
-            let dy = randomSpeed(); // Random vertical movement direction: -5 or 5
-            const imgWidth = image.offsetWidth;
-            const imgHeight = image.offsetHeight;
-
-            function moveImage() {
-                const screenWidth = window.innerWidth;
-                const screenHeight = window.innerHeight;
-
-                // Clamp the x and y positions to stay within the window bounds
-                if (x + imgWidth >= screenWidth || x <= 0) {
-                    dx = -dx; // Reverse direction horizontally
-                }
-
-                if (y + imgHeight >= screenHeight || y <= 0) {
-                    dy = -dy; // Reverse direction vertically
-                }
-
-                // Update position based on direction
-                x += dx;
-                y += dy;
-
-                // Clamp x and y to ensure the image stays within bounds after resize
-                x = Math.max(0, Math.min(x, screenWidth - imgWidth));
-                y = Math.max(0, Math.min(y, screenHeight - imgHeight));
 
                 // Apply new position to image
                 image.style.left = `${x}px`;
