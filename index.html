@@ -11,55 +11,60 @@
             background-color: #D8DEDD;
         }
 
-        #bouncing-image {
+        img {
             position: absolute;
             width: 7%; /* Set your image size */
             height: auto; /* Set your image size */
-            left: 0;
-            top: 0;
             transition: transform 0.01s;
         }
     </style>
 </head>
 <body>
-    <img id="bouncing-image" src="src/arcabounce.jpg" alt="Bouncing Image">
+    <img id="arca" src="src/arcabounce.jpg" alt="Bouncing Image">
+    <img id="phie" src="src/phie.jpeg" alt="Bouncing Image">
+    <img id="bjork" src="src/bjork.jpg" alt="Bouncing Image">
+    <img id="eartheater" src="src/eartheater" alt="Bouncing Image">
 
     <script>
-        const image = document.getElementById('bouncing-image');
+        const images = document.querySelectorAll('img'); // Select all <img> elements
         const speed = 5; // Speed of the bouncing
-        let x = 0;
-        let y = 0;
-        let dx = speed; // Horizontal movement direction
-        let dy = speed; // Vertical movement direction
-        const imgWidth = image.offsetWidth;
-        const imgHeight = image.offsetHeight;
 
-        function moveImage() {
-            const screenWidth = window.innerWidth;
-            const screenHeight = window.innerHeight;
+        // Loop through each image and animate it
+        images.forEach(image => {
+            let x = Math.random() * window.innerWidth; // Random starting position on x-axis
+            let y = Math.random() * window.innerHeight; // Random starting position on y-axis
+            let dx = speed; // Horizontal movement direction
+            let dy = speed; // Vertical movement direction
+            const imgWidth = image.offsetWidth;
+            const imgHeight = image.offsetHeight;
 
-            // Check if image is hitting the right or left edge
-            if (x + imgWidth >= screenWidth || x <= 0) {
-                dx = -dx; // Reverse direction horizontally
+            function moveImage() {
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+
+                // Check if image is hitting the right or left edge
+                if (x + imgWidth >= screenWidth || x <= 0) {
+                    dx = -dx; // Reverse direction horizontally
+                }
+
+                // Check if image is hitting the bottom or top edge
+                if (y + imgHeight >= screenHeight || y <= 0) {
+                    dy = -dy; // Reverse direction vertically
+                }
+
+                // Update position
+                x += dx;
+                y += dy;
+
+                // Apply new position to image
+                image.style.left = `${x}px`;
+                image.style.top = `${y}px`;
+
+                requestAnimationFrame(moveImage); // Keep animating the movement
             }
 
-            // Check if image is hitting the bottom or top edge
-            if (y + imgHeight >= screenHeight || y <= 0) {
-                dy = -dy; // Reverse direction vertically
-            }
-
-            // Update position
-            x += dx;
-            y += dy;
-
-            // Apply new position to image
-            image.style.left = `${x}px`;
-            image.style.top = `${y}px`;
-
-            requestAnimationFrame(moveImage); // Keep animating the movement
-        }
-
-        moveImage(); // Start the animation
+            moveImage(); // Start the animation for each image
+        });
     </script>
 </body>
 </html>
